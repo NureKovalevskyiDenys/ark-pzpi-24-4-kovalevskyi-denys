@@ -1,0 +1,301 @@
+﻿     Харківський національний університет радіоелектроніки 
+     Факультет комп’ютерних наук 
+     Кафедра програмної інженерії
+     
+     
+     
+     ЗВІТ
+     до практичного завдання №1
+     з дисципліни «Аналіз та рефакторинґ коду»
+     на тему: «Правила оформлення програмного коду»
+     
+     
+     
+     
+                                             Виконав
+                                             ст. гр. ПЗПІ-24-4
+                                             Ковалевський Денис
+                                             
+                                             
+                                             
+                                             Перевірив
+                                             ст. викладач кафедри ПІ
+                                             Сокорчук Ігор Петрович
+     
+     
+     
+     
+     
+     
+     Харків 2026
+     1 ІСТОРІЯ ЗМІН
+     	Таблиця 1.1 - Історія змін звіту
+     №     Дата     Версія     Опис змін та виправлень           1     02.11.2026     0.1     Створено розділ «Завдання»           2     02.11.2026     0.1     Створено розділ «Опис виконаної роботи»           3     03.11.2026     1.0     Створено розділ «Висновки» та «Використані джерела», Додатки А, Б та В.           
+     
+
+     2 ЗАВДАННЯ
+     2.1 Мета роботи
+
+     Метою роботи є ознайомити студентів з основними рекомендаціями щодо написання чистого, ефективного та підтримуваного коду для обраної мови програмування, а також навчити аналізувати та рефакторити код для покращення його якості. Для виконання роботи було обрано мову програмування Python.
+     
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+	3.1 Значення правил оформлення та стандартизація в команді
+	
+	Код на Python оформлюють за єдиним набором конвенцій, відомим як PEP 8, який команда погоджує та використовує у всіх файлах проєкту [1]. Гвідо ван Россум наголошував, що код читається набагато частіше, ніж пишеться. Відповідно до PEP 8, конвенції необхідні для покращення читабельності коду та узгодженості співпраці у команді [1]. Р. Мартін формулює аналогічні вимоги: єдність стилю тримається на домовленості та автоматичних інструментах (лінтерах та форматерах) [3]. Приклад еталонного коду наведено в додатку В, розділ В.1. Слайд презентації зображено на рисунку Б.1.
+
+	3.2 Структура коду
+     В Python структура файлу починається з імпортів. Згідно з PEP 8, імпорти повинні розташовуватися на окремих рядках на самому початку файлу, відразу після коментарів модуля та Docstrings [1]. Їх необхідно групувати у три блоки: стандартна бібліотека, сторонні модулі та локальні модулі програми [1]. Між кожним блоком має бути порожній рядок. Р. Мартін порівнює вихідний код з газетною статтею [3]. Порожні рядки відіграють роль роздільників. Функції вищого рівня та класи відокремлюються двома порожніми рядками, а методи всередині класу – одним [1]. Приклад з правильним розміщенням директив імпорту наведено в додатку В, розділ В.4. Слайд зображено на рисунку Б.2.
+     
+     3.3 Форматування коду
+     Настанови PEP 8 жорстко вимагають використовувати рівно 4 пробіли для кожного рівня відступу, використання символу табуляції заборонено [1]. Максимальна довжина рядка обмежена 79 символами для коду та 72 символами для коментарів та Docstrings [1]. Якщо вираз занадто довгий, його переносять на новий рядок, обгортаючи в круглі дужки. Пробіли завжди ставляться навколо операторів присвоювання (=), порівняння (==, <, >) та логічних операторів (and, or) [1]. Фрагмент коду у додатку В, розділ В.1 показує ці правила в дії. Слайд презентації зображено на рисунку Б.3.
+     
+     3.4 Іменування
+     Згідно з PEP 8, імена класів записуються у стилі CamelCase (наприклад, DataProcessor) [1]. Функції, методи та змінні записуються у snake_case (малими літерами з підкресленням) [1]. Константи виділяються UPPER_CASE_WITH_UNDERSCORES. Захищені змінні або методи починаються з одного символу підкреслення [1].
+     Скорочень слід уникати, якщо вони не є загальноприйнятими. Імена повинні відображати суть, а «магічні числа» варто виносити в константи [3]. Приклад іменування наведено в додатку В, розділ В.5, а приклад заміни чисел константами – у розділі В.3. Слайд зображено на рисунку Б.4.
+     
+     3.5 Коментарі
+     PEP 8 вимагає, щоб коментарі були актуальними та не суперечили коду [1]. Inline-коментарі повинні відділятися від коду щонайменше двома пробілами [1]. Проте, як зазначає Р. Мартін, найкращий коментар – це той, якого вдалося уникнути завдяки гарному іменуванню функцій та змінних [3].
+     Корисними є лише ті коментарі, які пояснюють «ЧОМУ» зроблено саме так, а не «ЩО» робить код [3]. У розділі В.6 додатка В показано порушення та правильний підхід: другий коментар пояснює системну логіку, яку неможливо виразити лише синтаксисом. Слайд показано на рисунку Б.5.
+     
+     3.6 Документування коду: Docstrings (PEP 257)
+     Документування коду в Python реалізується через рядки документації (Docstrings), оформлені у потрійні подвійні лапки ("""..."""). Це описано окремим стандартом PEP 257 [2]. Усі публічні модулі, класи та функції повинні мати такі рядки відразу після оголошення [2]. Перший рядок описує, що робить об'єкт, далі йде порожній рядок, а після нього – детальний опис аргументів та значень повернення. Приклад Docstring-коментаря наведено в додатку В, розділ В.7. Слайд презентації зображено на рисунку Б.6.
+     
+     3.7 Приклади оформлення коду: до і після рефакторинґу
+     У розділі В.2 додатка В код порушує правила: метод f і параметри a, b не дають уявлення про бізнес-логіку [3]. Немає пробілів навколо операторів, інструкції if/else записані в один рядок [1].
+     У розділі В.3 той самий алгоритм відрефакторено: використано snake_case, числа винесено в константи, додано анотації типів. Логіку if/else замінено на тернарний оператор. Слайд зображено на рисунку Б.10.
+     
+     3.8 Конвенції стилю та програмні інструменти форматування
+     Найпопулярніший лінтер для Python – flake8. Він аналізує код на порушення PEP 8 (довжина рядка, відступи, невикористані імпорти) і генерує попередження [4]. Форматер Black автоматично переписує код під єдиний жорсткий стандарт. Налаштування flake8 зазвичай зберігаються у файлі .flake8 або setup.cfg (розділ В.8 додатка В) [4]. Слайд зображено на рисунку Б.7.
+     
+     3.9 Кодування на основі тестування (TDD) та організація коду
+     Для тестування в Python найчастіше використовується фреймворк pytest [5]. TDD (Test-Driven Development) передбачає написання тестів до реалізації коду [3]. Тест повинен складатися з трьох частин: Arrange (підготовка), Act (виконання) та Assert (перевірка) [3]. Приклад наведено в розділі В.9 додатка В. Замість циклів pytest пропонує декоратор @pytest.mark.parametrize для перевірки різних вхідних даних [5]. Слайд зображено на рисунку Б.8.
+     
+     3.10 Інструменти та автоматизація підтримки якості коду
+     Найкраща практика автоматизації – використання pre-commit hooks [4]. Розробник створює файл .pre-commit-config.yaml (розділ В.12 додатка В). Перед кожним комітом Git автоматично запускає black та flake8 [4]. Якщо знайдено порушення стилю, коміт блокується. Слайд зображено на рисунку Б.9.
+     
+
+     4 ВИСНОВКИ
+     
+     У результаті виконання практичної роботи було розглянуто основні рекомендації щодо написання чистого коду мовою Python (PEP 8) [1]. Було отримано навички застосування правил структури файлів, відступів та конвенцій іменування. Досліджено підходи до написання Docstrings [2], автоматизації форматування за допомогою Black і Flake8 [4], а також розглянуто базові принципи розробки через тестування (TDD) за допомогою Pytest [3, 5].
+     
+
+     5 ВИКОРИСТАНІ ДЖЕРЕЛА
+     
+     1. PEP 8 – Style Guide for Python Code. Python.org. URL: https://peps.python.org/pep-0008/ (date of access: 03.11.2026).
+     2. PEP 257 – Docstring Conventions. Python.org. URL: https://peps.python.org/pep-0257/ (date of access: 03.11.2026).
+     3. Martin R. Clean Code: A Handbook of Agile Software Craftsmanship. Pearson Education Canada, 2008 (date of access: 03.11.2026). 
+     4. Flake8: Your Tool For Style Guide Enforcement. Flake8 Documentation. URL: https://flake8.pycqa.org/en/latest/ (date of access: 03.11.2026).
+     5. Pytest documentation. URL: https://docs.pytest.org/ (date of access: 03.11.2026).
+     
+
+ДОДАТОК А
+
+	Відеозапис
+	Відеозапис доповіді: https://www.youtube.com/watch?v=i3RdbGni4MU
+	Хронологічний опис відеозапису:
+     00:00 – Слайд 1. Вступ: значення правил оформлення коду Python (PEP 8).
+     00:13 – Слайд 2. Структура коду: директиви імпорту, порожні рядки.
+     00:45 – Слайд 3. Форматування коду: відступи, довжина рядка.
+     01:20 – Слайд 4. Іменування: snake_case, CamelCase, UPPER_CASE.
+     01:57 – Слайд 5. Коментарі: пояснення причини рішення, а не повтор коду.
+     02:38 – Слайд 6. Документування коду: Docstrings.
+     03:21 – Слайд 7. Конвенції стилю та інструменти перевірки: flake8, black.
+     04:00 – Слайд 8. TDD: організація коду під тести, схема Arrange, Act, Assert.
+     04:42 – Слайд 9. Інструменти автоматизації: git pre-commit hooks.
+     05:20 – Слайд 10. Приклади оформлення коду: фрагмент до і після рефакторинґу.
+     06:04 – Слайд 11. Висновки.
+     06:34 – Слайд 12. Використані джерела.
+     
+
+     ДОДАТОК Б
+     
+     Слайди презентації
+     
+
+Рисунок Б.1 – Слайд 1. Вступ: Правила оформлення коду Python
+
+
+Рисунок Б.2 – Слайд 2. Структура коду: імпорти і порожні рядки
+
+Рисунок Б.3 – Слайд 3. Форматування коду: відступи та довжина рядків
+
+
+Рисунок Б.4 – Слайд 4. Іменування: конвенції регістру
+     
+
+
+Рисунок Б.5 – Слайд 5. Коментарі: пояснення причини
+
+
+Рисунок Б.6 – Слайд 6. Документування коду: Docstrings
+     
+
+
+Рисунок Б.7 – Слайд 7. Інструменти форматування: flake8 та black
+
+
+Рисунок Б.8 – Слайд 8. TDD: модульні тести pytest, схема AAA
+     
+
+
+Рисунок Б.9 – Слайд 9. Автоматизація якості коду: pre-commit hooks
+
+
+Рисунок Б.10 – Слайд 10. Приклади коду: фрагмент до і після рефакторинґу
+     
+
+
+Рисунок Б.11 – Слайд 11. Висновки
+
+
+Рисунок Б.12 – Слайд 12. Використані джерела
+     
+
+ДОДАТОК В
+
+	Програмний код
+     В.1 ЕТАЛОННИЙ ПРИКЛАД ОФОРМЛЕННЯ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 def calculate_area(radius: float) -> float:
+2    """Обчислює площу кола за заданим радіусом."""
+3    if radius < 0:
+4        raise ValueError("Радіус не може бути від'ємним.")
+5     
+6    return math.pi * (radius ** 2)
+
+	В.2 ПРИКЛАД ПРОГРАМНОГО КОДУ ДО РЕФАКТОРИНҐУ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 def f(a,b):
+2     x=a*b # multiply
+3     if x>100:return x-10
+4     else:return x
+
+	В.3 ПРИКЛАД ПРОГРАМНОГО КОДУ ПІСЛЯ РЕФАКТОРИНҐУ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 THRESHOLD = 100
+2 DISCOUNT = 10
+3 
+4 def get_total(price: int, quantity: int) -> int:
+5     total = price * quantity
+6     return total - DISCOUNT if total > THRESHOLD else total
+
+     В.4 ПРОСТІР ІМЕН І ДИРЕКТИВИ ІМПОРТУ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 import os
+2 import sys
+3  
+4 import requests
+5 
+6 from myproject.models import Order
+
+	В.5 ІМЕНУВАННЯ ТА КОНСТАНТА
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 MAX_RETRIES = 5
+2 
+3 class DataProcessor:
+4     def __init__(self, data_queue):
+5         self._data_queue = data_queue
+6         
+7     @property
+8     def is_full(self) -> bool:
+9         return len(self._data_queue) >= MAX_RETRIES
+
+	В.6 КОМЕНТАР ПРО ПРИЧИНУ, А НЕ ПРО ДІЮ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1         # Погано: дублює те, що й так зрозуміло з коду
+2         self.counter += 1  # Збільшуємо лічильник на 1
+3 
+4         # Добре: пояснює "ЧОМУ", а не "ЩО"
+5         # Сервер скидає перше з'єднання після перезавантаження,
+6         # тому запит надсилається двічі.
+7         self.send_request("ping")
+8         self.send_request("ping")
+
+     В.7 DOCSTRING-КОМЕНТАР МЕТОДУ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 def add_numbers(first: int, second: int) -> int:
+2     """
+3     Додає два цілих числа.
+4 
+5     Args:
+6         first (int): Перший доданок.
+7         second (int): Другий доданок.
+8 
+9     Returns:
+10         int: Сума двох чисел.
+11    """
+12    return first + second
+
+	В.8 НАЛАШТУВАННЯ .FLAKE8
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 """
+2 [flake8]
+3 max-line-length = 79
+4 extend-ignore = E203
+5 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
+6 """
+
+	
+
+
+
+     В.9 ТЕСТ ЗА СХЕМОЮ ARRANGE, ACT, ASSERT
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 def test_add_empty_string_returns_zero():
+2     # Arrange
+3     calculator = StringCalculator()
+4     
+5     # Act
+6     actual = calculator.add("")
+7     
+8     # Assert
+9     assert actual == 0
+
+	В.10 ПЕРЕВІРКА ФОРМАТУВАННЯ З КОМАНДНОГО РЯДКА
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 """
+2 # Автоматично відформатувати весь код у проєкті
+3 black .
+4 
+5 # Перевірити код на дотримання стилю без внесення змін
+6 flake8 .
+7 """
+
+	В.11 ШОВ ДЛЯ ТЕСТУВАННЯ (Dependency Injection)
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 class DateTimeProvider:
+2     def get_weekday(self) -> int:
+3         return datetime.now().weekday()
+4 
+5 def get_discounted_price(price: int, provider: DateTimeProvider) -> int:
+6     if provider.get_weekday() == 1:
+7         return price // 2
+8     return price
+
+     В.12 ПЕРЕВІРКА СТИЛЮ ПІД ЧАС ЗБІРКИ (.pre-commit-config.yaml)
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 """
+2 repos:
+3 -   repo: https://github.com/psf/black
+4     rev: 22.3.0
+5     hooks:
+6     -   id: black
+7 -   repo: https://github.com/PyCQA/flake8
+8     rev: 4.0.1
+9     hooks:
+10    -   id: flake8
+11 """
+
+	В.13 ПАРАМЕТРИЗОВАНИЙ ТЕСТ БЕЗ ЛОГІКИ
+     GitHub репозиторій: https://github.com/NureKovalevskyiDenys/ark-pzpi-24-4-kovalevskyi-denys/blob/main/Pract1/pzpi-24-4-kovalevskyi-denys-pract1/code-examples-code-conventions.py
+1 @pytest.mark.parametrize("inputs, expected", [
+2     ("0,0,0", 0),
+3     ("0,1,2", 3),
+4     ("1,2,3", 6),
+5 ])
+6 def test_add_multiple_numbers_returns_sum(inputs, expected):
+7     calculator = StringCalculator()
+8     assert calculator.add(inputs) == expected
+2
+
+
